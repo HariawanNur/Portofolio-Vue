@@ -70,7 +70,7 @@ export default {
         objectivesDetails:
           'Membangun sistem keamanan berbasis Laravel dan MySQL untuk mencegah serangan XSS (Cross-Site Scripting) pada file PDF yang diunggah, dengan menerapkan mekanisme penyaringan dan pembersihan elemen HTML tersembunyi sebelum dokumen disimpan di server, sehingga tercapai kepatuhan standar keamanan aplikasi web dan perlindungan data pengguna.',
         technologies: [
-          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','Laravel'] },
+          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','.Net'] },
         ],
         projectDetailsHeading: 'Challenge',
         projectDetails: [

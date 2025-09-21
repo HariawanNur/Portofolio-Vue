@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Projects from "../views/Projects.vue";
 import Contact from "../views/Contact.vue";
@@ -8,7 +8,8 @@ import projects from "@/data/projects";
 const specialComponents = {
   "accountcheck": () => import("../views/SingleProject.vue"),
   "xss-shield": () => import("../views/XssShield.vue"),
-  "cloudinary-powered-media-uploader": () => import("../views/CloudinaryPoweredMediaUploader.vue"), // <- ini
+  "cloudinary-powered-media-uploader": () =>
+    import("../views/CloudinaryPoweredMediaUploader.vue"),
 };
 
 // Helper untuk bikin slug dari title
@@ -21,7 +22,6 @@ projects.forEach((p) => {
   if (specialComponents[slug]) {
     projectComponents[slug] = specialComponents[slug];
   } else {
-    // default mengarah ke file dengan nama tanpa spasi
     projectComponents[slug] = () =>
       import(`../views/${p.title.replace(/\s+/g, "")}.vue`);
   }
@@ -52,7 +52,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(), // <-- pake hash mode
   routes,
 });
 
