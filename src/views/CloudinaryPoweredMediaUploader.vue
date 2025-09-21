@@ -27,7 +27,7 @@ import ProjectInfo from '../components/projects/ProjectInfo.vue';
 import ProjectRelatedProjects from '../components/projects/ProjectRelatedProjects.vue';
 
 export default {
-  name: "SingleProject",
+  name: "Cloudinary-Powered Media Uploader",
   components: {
     ProjectHeader,
     ProjectGallery,
@@ -51,9 +51,9 @@ export default {
   data() {
     return {
       singleProjectHeader: {
-        singleProjectTitle: 'AccountCheck',
-        singleProjectDate: 'Mei 2025 - Juni 2025',
-        singleProjectTag: 'Frontend / Backend',
+        singleProjectTitle: 'Cloudinary-Powered Media Uploader',
+        singleProjectDate: 'Agustus 2024 - September 2024',
+        singleProjectTag: 'UI / Frontend',
       },
       projectImages: [
         { id: 1, title: 'Kabul Project Management UI', img: require('@/assets/images/ui-project-1.jpg') },
@@ -68,16 +68,17 @@ export default {
         ],
         objectivesHeading: 'Objective',
         objectivesDetails:
-          'Membangun sistem validasi rekening yang akurat, cepat, dan andal dengan integrasi real-time ke API Bank Danamon, sekaligus menyediakan mekanisme fallback ketika API mengalami gangguan, agar proses pendaftaran nasabah tetap berjalan lancar dan data yang tersimpan tetap terjamin keakuratannya.',
+          'Mengembangkan sistem unggah media berbasis Cloudinary dengan fitur optimasi file (resize/compress) sebelum dikirim, untuk memastikan efisiensi penyimpanan, kepatuhan terhadap validasi pihak ketiga, serta menjaga kualitas media yang diunggah.',
         technologies: [
-          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','Laravel', 'Java'] },
+          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','Laravel'] },
         ],
         projectDetailsHeading: 'Challenge',
         projectDetails: [
-          { id: 1, details: 'Menangani keterbatasan respon API pihak ketiga (timeout/error) yang berpotensi menghambat proses validasi.' },
-          { id: 2, details: 'Mengelola load tinggi pada sistem validasi tanpa menurunkan performa.' },
-          { id: 3, details: 'Mendesain strategi caching yang efektif untuk mencegah pemanggilan API berulang tanpa mengorbankan akurasi data.' },
-          { id: 4, details: 'Menyeimbangkan antara akurasi validasi rekening dan efisiensi kinerja sistem agar sesuai dengan kebutuhan bisnis.' },
+          { id: 1, details: 'Merancang integrasi uploader dengan Cloudinary menggunakan API pihak ketiga.' },
+          { id: 2, details: 'Menyediakan fitur file resize/compress otomatis sebelum proses unggah untuk menghindari penolakan validasi.' },
+          { id: 3, details: 'Menjamin kualitas media tetap optimal meskipun ukuran file diperkecil.' },
+          { id: 4, details: 'Mengelola metadata file (ukuran, format, dan path penyimpanan) agar sesuai standar Cloudinary.' },
+          { id: 5, details: 'Memastikan pengalaman pengguna tetap cepat dan mulus saat proses unggah file.' },
         ],
         socialSharingsHeading: 'Share This',
         socialSharings: [

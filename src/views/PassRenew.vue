@@ -27,7 +27,7 @@ import ProjectInfo from '../components/projects/ProjectInfo.vue';
 import ProjectRelatedProjects from '../components/projects/ProjectRelatedProjects.vue';
 
 export default {
-  name: "SingleProject",
+  name: "PassRenew",
   components: {
     ProjectHeader,
     ProjectGallery,
@@ -51,8 +51,8 @@ export default {
   data() {
     return {
       singleProjectHeader: {
-        singleProjectTitle: 'AccountCheck',
-        singleProjectDate: 'Mei 2025 - Juni 2025',
+        singleProjectTitle: 'PassRenew',
+        singleProjectDate: 'Febuari 2024 - Mei 2024',
         singleProjectTag: 'Frontend / Backend',
       },
       projectImages: [
@@ -60,7 +60,7 @@ export default {
         { id: 2, title: 'Kabul Project Management UI', img: require('@/assets/images/web-project-2.jpg') },
         { id: 3, title: 'Kabul Project Management UI', img: require('@/assets/images/mobile-project-2.jpg') },
       ],
-      projectInfo: {
+     projectInfo: {
         clientHeading: 'About Client',
         companyInfos: [
           { id: 1, title: 'Name', details: 'PT Adira Multi Finance' },
@@ -68,16 +68,16 @@ export default {
         ],
         objectivesHeading: 'Objective',
         objectivesDetails:
-          'Membangun sistem validasi rekening yang akurat, cepat, dan andal dengan integrasi real-time ke API Bank Danamon, sekaligus menyediakan mekanisme fallback ketika API mengalami gangguan, agar proses pendaftaran nasabah tetap berjalan lancar dan data yang tersimpan tetap terjamin keakuratannya.',
+          'Membangun fitur reset password oleh admin dengan otomatisasi pengiriman password acak melalui SendGrid, terintegrasi dengan sistem internal berbasis Laravel dan MySQL, untuk meningkatkan efisiensi pemulihan akun dan mengurangi beban tim support.',
         technologies: [
-          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','Laravel', 'Java'] },
+          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','Laravel'] },
         ],
         projectDetailsHeading: 'Challenge',
         projectDetails: [
-          { id: 1, details: 'Menangani keterbatasan respon API pihak ketiga (timeout/error) yang berpotensi menghambat proses validasi.' },
-          { id: 2, details: 'Mengelola load tinggi pada sistem validasi tanpa menurunkan performa.' },
-          { id: 3, details: 'Mendesain strategi caching yang efektif untuk mencegah pemanggilan API berulang tanpa mengorbankan akurasi data.' },
-          { id: 4, details: 'Menyeimbangkan antara akurasi validasi rekening dan efisiensi kinerja sistem agar sesuai dengan kebutuhan bisnis.' },
+          { id: 1, details: 'Merancang mekanisme reset password yang aman dan terkontrol oleh admin.' },
+          { id: 2, details: 'Mengintegrasikan pengiriman password acak secara otomatis ke email pengguna menggunakan SendGrid.' },
+          { id: 3, details: 'Menjaga konsistensi keamanan dan validasi pengguna di seluruh sistem internal.' },
+          { id: 4, details: 'Memastikan dokumentasi dan alur pengembangan terstruktur melalui pendekatan waterfall.' },
         ],
         socialSharingsHeading: 'Share This',
         socialSharings: [

@@ -51,8 +51,8 @@ export default {
   data() {
     return {
       singleProjectHeader: {
-        singleProjectTitle: 'AccountCheck',
-        singleProjectDate: 'Mei 2025 - Juni 2025',
+        singleProjectTitle: 'XSS SHIELD',
+        singleProjectDate: 'Juni 2024 - Juli 2024',
         singleProjectTag: 'Frontend / Backend',
       },
       projectImages: [
@@ -68,16 +68,16 @@ export default {
         ],
         objectivesHeading: 'Objective',
         objectivesDetails:
-          'Membangun sistem validasi rekening yang akurat, cepat, dan andal dengan integrasi real-time ke API Bank Danamon, sekaligus menyediakan mekanisme fallback ketika API mengalami gangguan, agar proses pendaftaran nasabah tetap berjalan lancar dan data yang tersimpan tetap terjamin keakuratannya.',
+          'Membangun sistem keamanan berbasis Laravel dan MySQL untuk mencegah serangan XSS (Cross-Site Scripting) pada file PDF yang diunggah, dengan menerapkan mekanisme penyaringan dan pembersihan elemen HTML tersembunyi sebelum dokumen disimpan di server, sehingga tercapai kepatuhan standar keamanan aplikasi web dan perlindungan data pengguna.',
         technologies: [
-          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','Laravel', 'Java'] },
+          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','Laravel'] },
         ],
         projectDetailsHeading: 'Challenge',
         projectDetails: [
-          { id: 1, details: 'Menangani keterbatasan respon API pihak ketiga (timeout/error) yang berpotensi menghambat proses validasi.' },
-          { id: 2, details: 'Mengelola load tinggi pada sistem validasi tanpa menurunkan performa.' },
-          { id: 3, details: 'Mendesain strategi caching yang efektif untuk mencegah pemanggilan API berulang tanpa mengorbankan akurasi data.' },
-          { id: 4, details: 'Menyeimbangkan antara akurasi validasi rekening dan efisiensi kinerja sistem agar sesuai dengan kebutuhan bisnis.' },
+          { id: 1, details: 'Mencegah eksploitasi dari konten berbahaya dalam file PDF yang berpotensi menjadi celah XSS.' },
+          { id: 2, details: 'Menjaga performa proses unggah file tetap lancar meskipun dilakukan filtering dan sanitasi data.' },
+          { id: 3, details: 'Mengurangi risiko XSS hingga 90% pada modul unggah file tanpa mengurangi fungsionalitas sistem.' },
+          { id: 4, details: 'Menyesuaikan penerapan keamanan dengan standar praktik terbaik untuk aplikasi web modern.' },
         ],
         socialSharingsHeading: 'Share This',
         socialSharings: [

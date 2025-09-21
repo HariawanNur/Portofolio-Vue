@@ -27,7 +27,7 @@ import ProjectInfo from '../components/projects/ProjectInfo.vue';
 import ProjectRelatedProjects from '../components/projects/ProjectRelatedProjects.vue';
 
 export default {
-  name: "SingleProject",
+  name: "AuthShield",
   components: {
     ProjectHeader,
     ProjectGallery,
@@ -51,8 +51,8 @@ export default {
   data() {
     return {
       singleProjectHeader: {
-        singleProjectTitle: 'AccountCheck',
-        singleProjectDate: 'Mei 2025 - Juni 2025',
+        singleProjectTitle: 'AuthShield',
+        singleProjectDate: 'Desember 2024 - Januari 2025',
         singleProjectTag: 'Frontend / Backend',
       },
       projectImages: [
@@ -68,16 +68,16 @@ export default {
         ],
         objectivesHeading: 'Objective',
         objectivesDetails:
-          'Membangun sistem validasi rekening yang akurat, cepat, dan andal dengan integrasi real-time ke API Bank Danamon, sekaligus menyediakan mekanisme fallback ketika API mengalami gangguan, agar proses pendaftaran nasabah tetap berjalan lancar dan data yang tersimpan tetap terjamin keakuratannya.',
+          'Membangun sistem login aman berbasis Laravel dan MySQL dengan pendekatan waterfall, menerapkan proteksi brute force melalui mekanisme freeze login, serta menyimpan log percobaan untuk meningkatkan keamanan data pengguna.',
         technologies: [
-          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','Laravel', 'Java'] },
+          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','Laravel'] },
         ],
         projectDetailsHeading: 'Challenge',
         projectDetails: [
-          { id: 1, details: 'Menangani keterbatasan respon API pihak ketiga (timeout/error) yang berpotensi menghambat proses validasi.' },
-          { id: 2, details: 'Mengelola load tinggi pada sistem validasi tanpa menurunkan performa.' },
-          { id: 3, details: 'Mendesain strategi caching yang efektif untuk mencegah pemanggilan API berulang tanpa mengorbankan akurasi data.' },
-          { id: 4, details: 'Menyeimbangkan antara akurasi validasi rekening dan efisiensi kinerja sistem agar sesuai dengan kebutuhan bisnis.' },
+          { id: 1, details: 'Merancang sistem keamanan login yang efektif namun tetap ramah pengguna.' },
+          { id: 2, details: 'Mengimplementasikan fitur freeze login selama 3 menit setelah 3 kali gagal login.' },
+          { id: 3, details: 'Menyimpan log validasi dan percobaan login secara terstruktur di backend untuk audit keamanan.' },
+          { id: 4, details: 'Memastikan pendekatan waterfall menghasilkan dokumentasi dan kontrol kualitas yang rapi.' },
         ],
         socialSharingsHeading: 'Share This',
         socialSharings: [

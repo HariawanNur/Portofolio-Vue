@@ -27,7 +27,7 @@ import ProjectInfo from '../components/projects/ProjectInfo.vue';
 import ProjectRelatedProjects from '../components/projects/ProjectRelatedProjects.vue';
 
 export default {
-  name: "SingleProject",
+  name: "FortiPass",
   components: {
     ProjectHeader,
     ProjectGallery,
@@ -51,8 +51,8 @@ export default {
   data() {
     return {
       singleProjectHeader: {
-        singleProjectTitle: 'AccountCheck',
-        singleProjectDate: 'Mei 2025 - Juni 2025',
+        singleProjectTitle: 'FortiPass',
+        singleProjectDate: 'April 2024 - Mei 2024',
         singleProjectTag: 'Frontend / Backend',
       },
       projectImages: [
@@ -68,16 +68,16 @@ export default {
         ],
         objectivesHeading: 'Objective',
         objectivesDetails:
-          'Membangun sistem validasi rekening yang akurat, cepat, dan andal dengan integrasi real-time ke API Bank Danamon, sekaligus menyediakan mekanisme fallback ketika API mengalami gangguan, agar proses pendaftaran nasabah tetap berjalan lancar dan data yang tersimpan tetap terjamin keakuratannya.',
+          'Mengembangkan fitur reset password berbasis Vue.js, Laravel, dan MySQL dengan validasi keamanan real-time, menerapkan aturan password kuat serta validasi ganda di frontend dan backend, guna memastikan perlindungan data pengguna dan menjaga kualitas sistem secara terstruktur dengan pendekatan waterfall.',
         technologies: [
-          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','Laravel', 'Java'] },
+          { title: 'Tools & Technologies', techs: ['HTML','CSS','JavaScript','Vue.js','Laravel', 'MySQL'] },
         ],
         projectDetailsHeading: 'Challenge',
         projectDetails: [
-          { id: 1, details: 'Menangani keterbatasan respon API pihak ketiga (timeout/error) yang berpotensi menghambat proses validasi.' },
-          { id: 2, details: 'Mengelola load tinggi pada sistem validasi tanpa menurunkan performa.' },
-          { id: 3, details: 'Mendesain strategi caching yang efektif untuk mencegah pemanggilan API berulang tanpa mengorbankan akurasi data.' },
-          { id: 4, details: 'Menyeimbangkan antara akurasi validasi rekening dan efisiensi kinerja sistem agar sesuai dengan kebutuhan bisnis.' },
+          { id: 1, details: 'Menyusun aturan password yang kuat (minimal 8 karakter, huruf besar, dan karakter spesial).' },
+          { id: 2, details: 'Mencegah manipulasi data melalui validasi di sisi frontend dan backend.' },
+          { id: 3, details: 'Menjaga pengalaman pengguna tetap nyaman meskipun ada proses validasi berlapis.' },
+          { id: 4, details: 'Mendokumentasikan alur sistem secara sistematis dengan pendekatan waterfall.' },
         ],
         socialSharingsHeading: 'Share This',
         socialSharings: [

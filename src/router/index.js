@@ -1,134 +1,75 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
+import { createRouter, createWebHistory } from "vue-router";
+import Home from "../views/Home.vue";
+import Projects from "../views/Projects.vue";
+import Contact from "../views/Contact.vue";
+import projects from "@/data/projects";
+
+// Mapping project khusus kalau perlu override file default
+const specialComponents = {
+  "accountcheck": () => import("../views/SingleProject.vue"),
+  "xss-shield": () => import("../views/XssShield.vue"),
+  "cloudinary-powered-media-uploader": () => import("../views/CloudinaryPoweredMediaUploader.vue"), // <- ini
+};
+
+// Helper untuk bikin slug dari title
+const slugify = (title) => title.toLowerCase().replace(/\s+/g, "-");
+
+// Buat object mapping slug ke component loader
+const projectComponents = {};
+projects.forEach((p) => {
+  const slug = slugify(p.title);
+  if (specialComponents[slug]) {
+    projectComponents[slug] = specialComponents[slug];
+  } else {
+    // default mengarah ke file dengan nama tanpa spasi
+    projectComponents[slug] = () =>
+      import(`../views/${p.title.replace(/\s+/g, "")}.vue`);
+  }
+});
 
 const routes = [
-	{
-		path: '/',
-		name: 'Home',
-		component: Home,
-		meta: {
-			title: 'Hariawan Nur Fajri - Home',
-		},
-	},
-	{
-		path: '/about',
-		name: 'About',
-		// route level code-splitting
-		// this generates a separate chunk (about.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
-		component: () =>
-			import(/* webpackChunkName: "about" */ '../views/About.vue'),
-		meta: {
-			title: 'Hariawan Nur Fajri - About',
-		},
-	},
-	{
-		path: '/projects',
-		name: 'Projects',
-		// route level code-splitting
-		// this generates a separate chunk (projects.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
-		component: () =>
-			import(/* webpackChunkName: "projects" */ '../views/Projects.vue'),
-		meta: {
-			title: 'Hariawan Nur Fajri - Projects',
-		},
-	},
-	{
-		path: '/projects/single-project',
-		name: 'Single Project',
-		// route level code-splitting
-		// this generates a separate chunk (projects.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
-		component: () =>
-			import(
-				/* webpackChunkName: "projects" */ '../views/SingleProject.vue'
-			),
-		meta: {
-			title: 'Hariawan Nur Fajri - Single Project',
-		},
-	},
-	{
-		path: '/contact',
-		name: 'Contact',
-		// route level code-splitting
-		// this generates a separate chunk (projects.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
-		component: () =>
-			import(/* webpackChunkName: "projects" */ '../views/Contact.vue'),
-		meta: {
-			title: 'Hariawan Nur Fajri - Contact',
-		},
-	},
+  { path: "/", name: "Home", component: Home },
+  { path: "/about", name: "About", component: () => import("../views/About.vue") },
+  { path: "/projects", name: "Projects", component: Projects },
+
+  // Route dinamis untuk semua project
+  {
+    path: "/projects/:slug",
+    name: "ProjectDynamic",
+    props: true,
+    component: { render: (h) => h("router-view") }, // dummy, diganti di beforeResolve
+    beforeEnter: async (to, from, next) => {
+      const slug = to.params.slug.toLowerCase();
+      const loader = projectComponents[slug];
+      if (!loader) return next("/projects"); // redirect kalau slug ga ada
+      const comp = await loader();
+      to.meta.component = comp.default;
+      next();
+    },
+  },
+
+  { path: "/contact", name: "Contact", component: Contact },
 ];
 
 const router = createRouter({
-	history: createWebHistory(process.env.BASE_URL),
-	routes,
-	scrollBehavior() {
-		document.getElementById('app').scrollIntoView();
-	},
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+});
+
+// Ganti component sebelum render
+router.beforeResolve((to, from, next) => {
+  if (to.meta.component) to.matched[0].components.default = to.meta.component;
+  next();
+});
+
+// Update title dinamis
+router.beforeEach((to, from, next) => {
+  const nearestWithTitle = to.matched
+    .slice()
+    .reverse()
+    .find((r) => r.meta && r.meta.title);
+  if (nearestWithTitle) document.title = nearestWithTitle.meta.title;
+  next();
 });
 
 export default router;
-
-/**
- * Below code will display the component/active page title
- * Powered by: Nangialai Stoman
- */
-
-// This callback runs before every route change, including on page load.
-router.beforeEach((to, from, next) => {
-	// This goes through the matched routes from last to first, finding the closest route with a title.
-	// e.g., if we have `/some/deep/nested/route` and `/some`, `/deep`, and `/nested` have titles,
-	// `/nested`'s will be chosen.
-	const nearestWithTitle = to.matched
-		.slice()
-		.reverse()
-		.find((r) => r.meta && r.meta.title);
-
-	// Find the nearest route element with meta tags.
-	const nearestWithMeta = to.matched
-		.slice()
-		.reverse()
-		.find((r) => r.meta && r.meta.metaTags);
-
-	const previousNearestWithMeta = from.matched
-		.slice()
-		.reverse()
-		.find((r) => r.meta && r.meta.metaTags);
-
-	// If a route with a title was found, set the document (page) title to that value.
-	if (nearestWithTitle) {
-		document.title = nearestWithTitle.meta.title;
-	} else if (previousNearestWithMeta) {
-		document.title = previousNearestWithMeta.meta.title;
-	}
-
-	// Remove any stale meta tags from the document using the key attribute we set below.
-	Array.from(
-		document.querySelectorAll('[data-vue-router-controlled]')
-	).map((el) => el.parentNode.removeChild(el));
-
-	// Skip rendering meta tags if there are none.
-	if (!nearestWithMeta) return next();
-
-	// Turn the meta tag definitions into actual elements in the head.
-	nearestWithMeta.meta.metaTags
-		.map((tagDef) => {
-			const tag = document.createElement('meta');
-
-			Object.keys(tagDef).forEach((key) => {
-				tag.setAttribute(key, tagDef[key]);
-			});
-
-			// We use this to track which meta tags we create so we don't interfere with other ones.
-			tag.setAttribute('data-vue-router-controlled', '');
-
-			return tag;
-		})
-		// Add the meta tags to the document head.
-		.forEach((tag) => document.head.appendChild(tag));
-
-	next();
-});

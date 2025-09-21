@@ -16,19 +16,19 @@ const projects = [
 	},
 	{
 		id: 3,
-		title: 'FortiPass: Secure Mobile Forgot Password System',
+		title: 'FortiPass',
 		category: 'Mobile Application',
 		img: require('@/assets/images/mobile-project-1.jpg'),
 	},
 	{
 		id: 4,
-		title: 'PassRenew: Secure Admin-Initiated Password Reset System',
+		title: 'PassRenew',
 		category: 'Web Application',
 		img: require('@/assets/images/web-project-1.jpg'),
 	},
 	{
 		id: 5,
-		title: 'AuthShield: Secure Login Validation System',
+		title: 'AuthShield',
 		category: 'Web Application',
 		img: require('@/assets/images/ui-project-2.jpg'),
 	},
