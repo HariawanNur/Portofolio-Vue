@@ -5,8 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
